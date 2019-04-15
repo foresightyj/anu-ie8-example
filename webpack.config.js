@@ -12,9 +12,10 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json', '.jsx'],
         alias: {
-            react:        'anujs/dist/ReactIE.js',
-            'react-dom':  'anujs/dist/ReactIE.js',
-            'prop-types':  'anujs/lib/ReactPropTypes.js',
+            react: 'anujs/dist/ReactIE.js',
+            'react-dom': 'anujs/dist/ReactIE.js',
+            'prop-types': 'anujs/lib/ReactPropTypes.js',
+            'redux': 'anujs/lib/ReduxIE', /// This is mainly for IE6-8, because of the poor performance of the isPlainObject method in the official source code.
             'create-react-class': 'anujs/lib/createClass.js'
         }
     },

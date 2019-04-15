@@ -1,4 +1,5 @@
 import 'es5-shim'; //IE8 ^4.5.10
+// import 'es5-shim/es5-sham'; //IE8 ^4.5.10
 import 'object-create-ie8';//IE8, 我写的库，这样就不用加上es5-sham
 import 'object-defineproperty-ie8';//IE8， 我写的库
 import 'console-polyfill';//IE8下，如果你不打开开发者工具，window下是没有console这个对象的，
@@ -12,13 +13,27 @@ import  React  from 'react';
 import  ReactDOM  from 'react-dom';
 
 var container = document.getElementById('root');
+import {createStore} from 'redux';
+
+let reducer = function(state, action){
+    switch (action.type){
+        case 'INC':
+            return {
+                count: state.count +1
+            };
+        default: 
+            return state;
+    }
+};
+
+let STORE = createStore(reducer, {count: 7});
 
 class HInput extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            value: this.props.defaultValue || ''
+            value: this.props.defaultValue || STORE.getState().count + ""
         };
 
         this.onChange = this.onChange.bind(this);
